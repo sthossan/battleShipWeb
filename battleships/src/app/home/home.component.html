@@ -1,0 +1,46 @@
+<block-ui>
+    <div class="container p-0">
+        <div class="pt-xxl-5 row">
+            <div class="col-12">
+                <h1 style="margin-left: 33%;">Welcome to battle ships</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 row pt-2 d-flex justify-content-center">
+        <div class="col-4">
+            <p class="d-flex justify-content-center">{{list[0]['name']}}</p>
+            <table class="table table-bordered table-responsive table-primary">
+                <tbody>
+                    <tr *ngFor="let item of list[0]['gameBoards']">
+                        <td *ngFor="let col of item['columns']"
+                            [ngClass]="col.isShipShow && col.color === 'black' ? 'ship-show' : col.color === 'hit'? 'hit' : col.color === 'lost'? 'lost': ''">
+                            {{col.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <p class="d-flex justify-content-center">{{list[1]['name']}}</p>
+            <table class="table table-bordered table-responsive table-primary">
+                <tbody>
+                    <tr *ngFor="let item of list[1]['gameBoards']">
+                        <td *ngFor="let col of item['columns']" [ngClass]="col.color === 'hit'? 'hit' : col.color === 'lost'? 'lost': ''"
+                            (click)="hitEnemy(col)">
+                            {{col.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container p-0">
+        <div class="pt-xxl-5 row">
+            <div class="col-12  d-flex justify-content-center">
+                <p *ngIf="errorMessage!==null" style="color: red;">{{errorMessage}}</p>
+            </div>
+            <button class="btn btn-primary btn-sm col-1 container" (click)="getList()">Reload</button>
+        </div>
+    </div>
+
+</block-ui>

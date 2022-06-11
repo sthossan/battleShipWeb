@@ -1,0 +1,18 @@
+
+table td{
+   text-align: center;
+   cursor: pointer;
+}
+
+.ship-show{
+    background-color: black;
+    color: white;
+}
+.hit{
+    background-color: blue;
+    color: white;
+}
+.lost{
+    background-color: red;
+    color: white;
+}
